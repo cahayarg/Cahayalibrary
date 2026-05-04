@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPAC Cahaya E-Library C</title>
+    
+    <style>
+        /* (Kode CSS ini sama persis dengan sebelumnya, tidak ada yang diubah) */
+        body { font-family: 'poppins' ; background-color: #f4f7f6; color: #333; margin: 0; padding: 40px 20px; }
+        h1 { color: #11120d; text-align: center; border-bottom: 3px solid #1B003F; padding-bottom: 15px; margin-bottom: 10px; }
+        .deskripsi-sistem { text-align: center; font-size: 14px; color: #561c24; margin-bottom: 30px; }
+        
+        .wadah-pencarian { max-width: 1000px; margin: 0 auto 20px auto; display: flex; gap: 10px; }
+        .input-pencarian { flex-grow: 1; padding: 12px 15px; border: 1px solid #ccc; border-radius: 6px; font-size: 12px; font-family: inherit; transition: border-color 0.3s; }
+        .input-pencarian:focus { outline: none; border-color: #3498db; box-shadow: 0 0 5px rgba(52, 152, 219, 0.3); }
+        .tombol-cari { background-color: #561c24; color: white; border: none; padding: 12px 24px; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; transition: background-color 0.3s; }
+        .tombol-cari:hover { background-color: #291C0E; }
+
+        .wadah-tabel { width: 100%; max-width: 1000px; margin: 0 auto 30px auto; overflow-x: auto; box-shadow: 0 4px 10px rgba(0,0,0,0.08); border-radius: 10px; }
+        table { width: 100%; border-collapse: collapse; background-color: #ffffff; }
+        th { background-color: #561c24; color: #ffffff; padding: 15px; text-align: left; font-weight: 600; white-space: nowrap;  font-size: 14px }
+        td { padding: 12px 15px; border-bottom: 1px solid #eeeeee; font-size: 14px }
+        tr:hover { background-color: #f8fbff; } 
+        .wadah-tabel table th,
+        .wadah-tabel table td { text-align: center;}
+
+        .wadah-tombol { text-align: center; }
+        .tombol-utama { display: inline-block; background-color: #561c24; color: white; padding: 12px 28px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 16px; transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(46, 204, 113, 0.4); box-sizing: border-box; }
+        .tombol-utama:hover { background-color: #291C0E; box-shadow: 0 4px 8px rgba(46, 204, 113, 0.6); transform: translateY(-2px); }
+
+        @media screen and (max-width: 600px) {
+            body { padding: 15px 10px; }
+            h1 { font-size: 18px; }
+            th, td { padding: 8px 10px; font-size: 12px; }
+            .wadah-pencarian { flex-direction: column; }
+            .tombol-cari { width: 100%; }
+            .tombol-utama { display: block; width: 100%; font-size: 12px; padding: 15px; } }
+            /* 🔥 efek dasar */
+            .wadah-tabel img { transition: transform 0.4s ease, box-shadow 0.4s ease;cursor: pointer;}
+            /* 🔥 saat disentuh kursor (hover) */
+            .wadah-tabel img:hover { transform: perspective(800px) rotateY(15deg) rotateX(8deg) scale(1.08);box-shadow: 8px 12px 20px rgba(0,0,0,0.35);}
+    </style>
+</head>
+<body>
+
+    <h1>Hi! Welcome to Cahaya E-Library</h1> 
+    <p class="deskripsi-sistem">Perpustakaan digital yang siap bantu kamu nemuin katalog buku tanpa harus ke mana-mana.</p>
+
+    <div class="wadah-pencarian">
+        <input type="text" id="inputPencarian" class="input-pencarian" placeholder="Masukkan kata kunci (Judul, Penulis, Tahun atau Kategori)...">
+        <button class="tombol-cari">Cari</button>
+    </div>
+
+    <div class="wadah-tabel">
+        <table id="tabelKatalog">
+            <tr>
+                <th>No.</th>
+                <th>Cover</th>
+                <th>Judul Buku</th>
+                <th>Penulis</th>
+                <th>Tahun</th>
+                <th>Kategori</th>
+            </tr>
+            <tr> 
+                <td>1</td>
+                <td>
+                    <a href="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1516602134i/36393774.jpg"
+                    target="_blank">
+                    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1516602134i/36393774.jpg"
+                    alt="Cover Buku" style="width: 100px; height: auto;"
+                </td>
+                <td>Laut Bercerita</td>
+                <td>Leila S. Chudori</td>
+                <td>2017</td>
+                <td>Fiksi</td> 
+            </td>
+            </tr>
+        <tr>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>
+                    <a href="https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/picture_meta/2024/1/28/bfenfrhizmwxkx6di6emhi.jpg"
+                    target="_blank">
+                    <img src="https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/picture_meta/2024/1/28/bfenfrhizmwxkx6di6emhi.jpg"
+                    alt="Cover Buku" style="width: 100px; height: auto;"
+                </td>
+                <td>Teruslah Bodoh Jangan Pintar</td>
+                <td>Tere Liye</td>
+                <td>2024</td>
+                <td>Fiksi</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>
+                    <a href="https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/products/bob-bi-324.jpg"
+                    target="_blank">
+                    <img src="https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/products/bob-bi-324.jpg"
+                    alt="Cover Buku" style="width: 100px; height: auto;"
+                </td>
+                <td>Log in : Habib & Onad</td>
+                <td>Husein Ja'far Al-Hadar</td>
+                <td>2025</td>
+                <td>Self-Improvement</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>
+                    <a href="https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/products/95ob5m98ur.jpg"
+                    target="_blank">
+                    <img src="https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/products/95ob5m98ur.jpg"
+                    alt="Cover Buku" style="width: 100px; height: auto;"
+                </td>
+                <td>Seporsi Mie Ayam Sebelum Mati</td>
+                <td>Brian Khrisna</td>
+                <td>2019</td>
+                <td>Fiksi-Drama</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td> 
+                    <a href="https://cdn.gramedia.com/uploads/items/WhatsApp_Image_2021-07-08_at_11.46.49_AM.jpeg"
+                    target="_blank">
+                    <img src="https://cdn.gramedia.com/uploads/items/WhatsApp_Image_2021-07-08_at_11.46.49_AM.jpeg"
+                    alt="Cover Buku" style="width: 100px; height: auto;"
+                </td>
+                <td>Janji</td>
+                <td>Tere Liye</td>
+                <td>2021</td>
+                <td>Sastra Indonesia</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="wadah-tombol">
+        <a href="#" class="tombol-utama">+ Tambah Koleksi Baru</a>
+    </div>
+
+    <script>
+        // 1. Ambil elemen input dan tabel berdasarkan ID yang kita buat tadi
+        const inputPencarian = document.getElementById("inputPencarian");
+        const tabel = document.getElementById("tabelKatalog");
+        // Ambil semua elemen baris (tr) yang ada di dalam tabel
+        const barisTabel = tabel.getElementsByTagName("tr");
+
+        // 2. Tambahkan "pendengar" (event listener) yang aktif setiap kali tombol keyboard dilepas (keyup)
+        inputPencarian.addEventListener("keyup", function() {
+            
+            // Ambil teks yang diketik pengguna, dan ubah menjadi huruf kecil (agar pencarian tidak sensitif huruf besar/kecil)
+            const kataKunci = inputPencarian.value.toLowerCase();
+
+            // 3. Lakukan perulangan (loop) untuk memeriksa setiap baris tabel.
+            // Kita mulai dari i = 1 (bukan 0) untuk melewati baris pertama yang berisi Judul Kolom (Header)
+            for (let i = 1; i < barisTabel.length; i++) {
+                
+                // Ambil semua sel data (td) di dalam baris yang sedang diperiksa
+                const selData = barisTabel[i].getElementsByTagName("td");
+                let adaKecocokan = false;
+
+                // Periksa setiap sel dalam baris tersebut (Judul, Penulis, Tahun, dll)
+                for (let j = 0; j < selData.length; j++) {
+                    if (selData[j]) {
+                        // Jika teks di dalam sel tersebut mengandung kata kunci yang diketik
+                        if (selData[j].innerText.toLowerCase().indexOf(kataKunci) > -1) {
+                            adaKecocokan = true;
+                            break; // Berhenti memeriksa sel lain di baris ini jika sudah ketemu kecocokan
+                        }
+                    }
+                }
+
+                // 4. Jika ada sel yang cocok, tampilkan barisnya. Jika tidak, sembunyikan barisnya.
+                if (adaKecocokan) {
+                    barisTabel[i].style.display = ""; // Mengembalikan ke tampilan semula
+                } else {
+                    barisTabel[i].style.display = "none"; // Menyembunyikan baris
+                }
+            }
+        });
+    </script>
+    <script>
+        document.querySelectorAll(".wadah-tabel td img").forEach(function(img) {
+        e.preventDefault();
+        e.stopPropagation();
+        this.classList.toggle("aktif");};});
+</script>
+
+</body>
+</html>
